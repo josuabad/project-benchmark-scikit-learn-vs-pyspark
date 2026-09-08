@@ -1,0 +1,22 @@
+services:
+  jupyter-spark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Borra o comenta la línea container_name:
+    # container_name: jupyter_spark_dev
+    user: root
+    privileged: true
+    ports:
+      - "8888:8888"
+      - "4040:4040"
+    volumes:
+      - spark_data:/workspace
+      - .:/workspace
+    working_dir: /workspace
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+
+volumes:
+  spark_data:
+    driver: local
