@@ -25,3 +25,15 @@ docker run -p 8888:8888 -p 4040:4040 -v $(pwd):/home/jovyan/work jupyter-spark:l
 docker compose build --no-cache
 
 ```
+
+## Descargar los datos
+
+Please, execute the following command to download the necessary data files for this project:
+
+```bash
+mkdir -p data/raw && cd data/
+wget https://archive.ics.uci.edu/static/public/280/higgs.zip -O raw/higgs.zip
+unzip data/raw/higgs.zip -d data/
+gunzip data/HIGGS.csv.gz
+rm -rf data/raw/ # OPCIONAL: Remove the zip file after extraction
+```
