@@ -31,9 +31,18 @@ docker compose build --no-cache
 Please, execute the following command to download the necessary data files for this project:
 
 ```bash
-mkdir -p data/raw && cd data/
-wget https://archive.ics.uci.edu/static/public/280/higgs.zip -O raw/higgs.zip
-unzip data/raw/higgs.zip -d data/
-gunzip data/HIGGS.csv.gz
-rm -rf data/raw/ # OPCIONAL: Remove the zip file after extraction
+cd workspace/
+mkdir data && cd data
+mkdir raw && cd raw
+wget https://archive.ics.uci.edu/static/public/280/higgs.zip -O higgs.zip
+unzip higgs.zip
+gunzip HIGGS.csv.gz
+```
+
+## Comando para ejecutarlos en secuencia
+
+Para lanzar los tres procesos secuencialmente dentro del contenedor:
+
+```bash
+python 1_sklearn_benchmark.py && python 2_pyspark_benchmark.py && python 3_generate_plots.py
 ```
